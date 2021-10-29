@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add1</title>
+</head>
+<body>
+    <script>
+        function trim(string) {
+            while (string.startsWith(' ')) {
+                string = string.slice(1)
+            } 
+
+            while (string.endsWith(' ')) {
+                string = string.slice(0, -1)
+            }
+
+            return `|${string}|`
+        }
+
+        console.log(trim('     hello    '))
+    </script>
+</body>
+</html>

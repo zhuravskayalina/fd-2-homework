@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOWELS</title>
+</head>
+<body>
+    <script>
+        function countVowels(string) {
+            const vowels = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
+            let counter = 0;
+            for (let i = 0; i < string.length; i++) {
+                if (vowels.includes(string[i])) {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
+        console.log(countVowels('Каждый человек имеет право сказать, и каждый человек имеет право слушать или не слушать.'));
+
+        //вариант 2
+
+        function countVowels(str)  {
+            const vowel = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
+            const vowelsArray = Array.from(str).filter(letter => vowel.includes(letter));
+            return vowelsArray.length;
+        }
+
+        console.log(countVowels('Не будете ли Вы так любезны, Иван, передать мне блокнот и "Известия"'));
+
+    </script>
+</body>
+</html>
