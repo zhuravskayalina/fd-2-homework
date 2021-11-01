@@ -28,7 +28,7 @@
             result.push(el);
         }
     }
-    return result;
+    return result.reduce((prev, curr) => prev + curr);
 }
         console.log(flat(arr));
       
