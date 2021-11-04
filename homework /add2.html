@@ -9,9 +9,9 @@
 <body>
     <script>
         function isPalindrome(string) {
-            string = string.toLowerCase()
+            let newStr = string.toLowerCase().split(' ').join('');
             
-            if (string === string.split('').reverse().join('')) {
+            if (newStr === newStr.split('').reverse().join('')) {
                 return `${string} is palindrome`
             } else {
                 return `${string} is not palindrome`
@@ -19,6 +19,9 @@
         }
 
         console.log(isPalindrome('Alla'));
+        console.log(isPalindrome('Лёша на полке клопа нашёл'));
+        console.log(isPalindrome('Всем привет'));
+
     </script>
 </body>
 </html>
