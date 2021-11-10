@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objects</title>
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .form input {
+            margin: 5px 0;
+        }
+
+        .input-text {
+            margin-left: 5px;
+        }
+
+        button {
+            width: 150px;
+        }
+
+       
+        .to-do {
+            border: 2px solid pink;
+            margin: 5px;
+            padding: 10px;
+            width: 150px;
+        }
+        
+        select {
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        #sort {
+            margin-top: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="form">
+        <div class="input-box"><input type="text" id="user-id" value="1"><span class="input-text">user id</span></div>
+        <div class="input-box"><input type="text" id="id" value="1"><span class="input-text">id</span></div>
+        <div class="input-box"><input type="text" id="title" value = "-"><span class="input-text">title</span></div>
+        <div class="input-box"><input type="text" id="is-completed" value="yes"><span class="input-text">is completed</span></div>
+        <button id="button" onclick="render(todos, createObj())">создать</button>
+        <select id="select">
+            <option value="done" data-direction="desc" data-field-name="isCompleted">сначала выполненные</option>
+            <option value ="not-done" data-direction="asc" data-field-name="isCompleted">сначала не выполненные</option>
+            <option value ="id-small" data-direction="asc" data-field-name="id">по id: сначала меньшие</option>
+            <option value ="id-big" data-direction="desc" data-field-name="id">по id: сначала большие</option>
+          </select>
+          <button id="sort" onclick="sort(todos)">сортировать</button>
+    </div>
+    <hr>
+    <div id="done-form">
+        
+    </div>
+    
+
+    <script src="js/objects-js.js"></script>
+</body>
+</html>
