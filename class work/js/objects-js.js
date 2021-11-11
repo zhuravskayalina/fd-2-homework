@@ -46,7 +46,6 @@ function deleteBox(id) {
 function sort(arr) {
 
     function byField(field, direction) {
-        console.log(field, direction);
        return direction === 'desc' ? 
        (a, b) => a[field] < b[field] ? 1 : -1 : 
        (a, b) => a[field] > b[field] ? 1 : -1;
