@@ -9,8 +9,18 @@
 <body>
     <script>
         function isPalindrome(string) {
-            let newStr = string.toLowerCase().split(' ').join('');
-            
+            const punctuationMarks = [',', '.', '?', '-', ';', '/', '!', '"', "(", ')'];
+            let newStr = string.toLowerCase().split(' ').join('')
+                               .replaceAll('ё', 'е')
+                               .replaceAll('ъ', 'ь');
+
+            for (let i = 0; i < newStr.length; i++) {
+               if (punctuationMarks.includes(newStr[i])) {
+                   console.log(newStr[i]);
+                   newStr = newStr.replace(newStr[i], '')
+               }
+            }
+
             if (newStr === newStr.split('').reverse().join('')) {
                 return `${string} is palindrome`
             } else {
@@ -18,9 +28,11 @@
             }
         }
 
-        console.log(isPalindrome('Alla'));
         console.log(isPalindrome('Лёша на полке клопа нашёл'));
-        console.log(isPalindrome('Всем привет'));
+        console.log(isPalindrome('Лёша'));
+        console.log(isPalindrome('ьЬ Ьъ'));
+
+
 
     </script>
 </body>
