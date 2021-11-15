@@ -9,17 +9,18 @@
 <body>
     <script>
         function isPalindrome(string) {
-            const punctuationMarks = [',', '.', '?', '-', ';', '/', '!', '"', "(", ')'];
+            const punctuationMarks = [',', '.', '?', '-', ';', '/', '!', '"'];
             let newStr = string.toLowerCase().split(' ').join('')
                                .replaceAll('ё', 'е')
                                .replaceAll('ъ', 'ь');
+            let newArr = [];
 
             for (let i = 0; i < newStr.length; i++) {
-               if (punctuationMarks.includes(newStr[i])) {
-                   console.log(newStr[i]);
-                   newStr = newStr.replace(newStr[i], '')
-               }
+                if (!punctuationMarks.includes(newStr[i])) {
+                    newArr.push(newStr[i])
+                };
             }
+            newStr = newArr.join('');
 
             if (newStr === newStr.split('').reverse().join('')) {
                 return `${string} is a palindrome`
