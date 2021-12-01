@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create elems</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 2px solid lightgreen;
+            width: 250px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .box input {
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        .input-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box p {
+            text-align: center;
+            margin: 5px;
+        }
+
+        .submit-button, .append-ul-button{
+            padding: 5px;
+            background-color: rgb(231, 201, 243);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .submit-button:hover, .append-ul-button:hover {
+            background-color: rgb(232, 217, 238);
+        }
+
+        .submit-button:active, .append-ul-button:active {
+            background-color: rgb(233, 196, 248);
+        }
+
+        .output {
+            border: 2px solid lightgreen;
+            width: 250px;
+            margin: 5px;
+        }
+
+        .wrapper {
+            display: flex;
+        }
+
+        .list {
+            list-style: circle;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <p>h1</p>
+            <div class="input-wrap h1-area">
+                <input type="text" name="text" placeholder="введите текст" value="hello"> 
+                <input type="text" name="property" placeholder="введите свойство" value="color"> 
+                <input type="text" name="value" placeholder="введите значение" value="pink"> 
+            </div>
+            <button class="submit-button h1-button" name="h1-area" value="h1">отправить</button>
+        </div>
+        <div class="box">
+            <p>p</p>
+            <div class="input-wrap p-area">
+                <input type="text" name="text" placeholder="введите текст" value="ranetki girls"> 
+                <input type="text" name="property" placeholder="введите свойство" value="backgroundColor"> 
+                <input type="text" name="value" placeholder="введите значение" value="yellow"> 
+            </div>
+            <button class="submit-button" name="p-area" value="p">отправить</button>
+        </div> 
+        <div class="box">
+            <p>ul</p>
+            <button class="submit-button" name="li-area" value="li">добавить li</button>
+            <div class="input-wrap li-area">
+                <input type="text" name="text" placeholder="введите текст" value="cat">
+                <input type="text" name="property" placeholder="введите свойство" value="fontStyle">
+                <input type="text" name="value" placeholder="введите значение" value="italic">
+            </div>
+            <button class="submit-button append-ul-button" name="append-ul">добавить ul</button>
+        </div>   
+    </div>
+    <div class="outputDiv"></div>
+    <script>
+        const outputDiv = document.createElement('div');
+        document.body.appendChild(outputDiv); //куда все будет отрисовываться
+        let ul = document.createElement('ul'); 
+
+        const buttons = document.querySelectorAll('.submit-button');
+
+        for (let button of buttons) {
+            if (button.name === 'append-ul') {
+                button.addEventListener('click', function() {
+                    appendUlElement();
+                })
+        } else {
+            button.addEventListener('click', function() {
+                createElement(button.name, button.value);
+            })
+            }
+        }
+
+        function createElement(area, tag) { 
+            const inputWrap = document.querySelector('.' + area);
+            const inputCollection = inputWrap.children;
+            let elem = document.createElement(tag);
+            
+            let text = '';
+            let property = '';
+            let value = '';
+
+            for (let input of inputCollection) {
+                if (input.name === 'text') {
+                    text = input.value;
+                } else if (input.name === 'property') {
+                    property = input.value;
+                } else if (input.name === 'value') {
+                    value = input.value;
+                }
+            }
+
+            elem.textContent = text;
+            elem.style[property] = value;
+
+            if (elem.tagName === 'LI') {
+                ul.appendChild(elem);
+                return;
+            }
+
+            outputDiv.appendChild(elem)
+        }
+
+        function appendUlElement() {
+            outputDiv.appendChild(ul);
+        }
+    </script>
+
+</body>
+</html>
