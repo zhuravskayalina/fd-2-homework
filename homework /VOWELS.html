@@ -9,6 +9,7 @@
 <body>
     <script>
         function countVowels(string) {
+            string = string.toLowerCase();
             const vowels = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
             let counter = 0;
             for (let i = 0; i < string.length; i++) {
@@ -24,6 +25,7 @@
         //вариант 2
 
         function countVowels(str)  {
+            str = str.toLowerCase()
             const vowel = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
             const vowelsArray = Array.from(str).filter(letter => vowel.includes(letter));
             return vowelsArray.length;
