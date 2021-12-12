@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRINKS_HASH_FUNC</title>
+    <style>
+
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button {
+            margin: 5px;
+            background-color: rgb(184, 241, 184);
+            border: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100px;
+        }
+
+        output * {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="ask-information">ввод информации о напитке</button>
+    <button class="get-information">получение информации о напитке</button>
+    <button class="delete-information">удаление информации о напитке</button>
+    <button class="show-information">перечень всех напитков</button>
+    <div class="output"></div>
+    <script>
+        const askInfoButton = document.querySelector('.ask-information');
+        const getInfoButton = document.querySelector('.get-information');
+        const deleteInfoButton = document.querySelector('.delete-information');
+        const showListButton = document.querySelector('.show-information');
+        const output = document.querySelector('.output');
+
+        let drinkStorage = new HashStorageFunc();
+        
+        askInfoButton.addEventListener('click', function() {
+            let drinkName = prompt('Введите название напитка', 'Маргарита');
+            let isAlcohol = confirm('Напиток алкогольный?') ? 'да' : 'нет';
+            let receipt = prompt('Введите рецепт напитка', 'Смешать текилу, сок лайма и лед');
+            if (!receipt) {
+                receipt = 'информация отсутствует'
+            }
+            let value = {
+                алкогольный: isAlcohol,
+                рецепт: receipt,
+            }          
+            drinkStorage.addValue(drinkName, value);
+        });
+
+       getInfoButton.addEventListener('click', function() {
+           let drinkName = prompt('О каком напитке получить информацию?', 'Маргарита');
+           let value = drinkStorage.getValue(drinkName);
+           if (!value) {
+               alert(`Информация о напитке  ${drinkName} отсутствует`);
+               return;
+           }         
+           let infoDiv = document.createElement('div');
+           let p = document.createElement('p');
+           p.innerHTML = `Информация о напитке "${drinkName}":`
+
+           let ul = document.createElement('ul');
+           for (let key in value) {           
+               let li = document.createElement('li');
+               li.textContent = `${key}: ${value[key]};`;
+               ul.append(li);
+           }
+           infoDiv.append(p);
+           infoDiv.append(ul);
+                     
+           output.append(infoDiv);
+       })
+
+       deleteInfoButton.addEventListener('click', function() {
+           let div = document.createElement('div');
+           let drinkName = prompt('Какой напиток удалить из списка?', 'Маргарита');
+           if (!drinkName) return;
+           let isDeleted = drinkStorage.deleteValue(drinkName);
+           if (isDeleted) {
+                div.innerHTML = `Информация о напитке "${drinkName}" была удалена`;
+           } else {
+                div.innerHTML = `Информация о напитке "${drinkName}" отсутствует`;
+           }
+
+           output.append(div);
+       })
+
+       showListButton.addEventListener('click', function() {
+           let keys = drinkStorage.getKeys();
+
+           if (keys.length < 1) {
+               alert('В базе отсутствуют коктейли');
+               return;
+            }
+
+           let p = document.createElement('p');
+           let ol = document.createElement('ol');
+
+           for (let el of keys) {
+               let li = document.createElement('li');
+               li.textContent = el;
+               ol.append(li);
+           }
+
+           p.textContent = 'Перечень всех коктейлей:'
+
+           output.append(p);
+           output.append(ol);
+
+
+       });
+
+        function HashStorageFunc() {
+            hash = {};
+
+            this.addValue = function(key,value) {
+                hash[key] = value;
+            } 
+
+            this.getValue = function(key) {
+                return hash[key];
+            }
+
+            this.deleteValue = function(key) {
+            if (key in hash) {
+                delete hash[key];
+                return true;
+            } else {
+                return false;
+            }
+            }
+
+            this.getKeys = function() {
+                return Object.keys(hash);
+            }    
+         }
+
+         
+
+    </script>
+</body>
+</html>
