@@ -22,6 +22,14 @@
         output * {
             margin-top: 10px;
         }
+
+        button:hover {
+            background-color: rgb(204, 248, 204);
+        }
+
+        button:focus {
+            background-color: rgb(158, 238, 158);
+        }
     </style>
 </head>
 <body>
@@ -41,6 +49,8 @@
         
         askInfoButton.addEventListener('click', function() {
             let drinkName = prompt('Введите название напитка', 'Маргарита');
+            if (!drinkName) return;
+
             let isAlcohol = confirm('Напиток алкогольный?') ? 'да' : 'нет';
             let receipt = prompt('Введите рецепт напитка', 'Смешать текилу, сок лайма и лед');
             if (!receipt) {
@@ -50,11 +60,14 @@
                 алкогольный: isAlcohol,
                 рецепт: receipt,
             }          
+            console.log(drinkStorage);
             drinkStorage.addValue(drinkName, value);
         });
 
        getInfoButton.addEventListener('click', function() {
            let drinkName = prompt('О каком напитке получить информацию?', 'Маргарита');
+           if (!drinkName) return;
+
            let value = drinkStorage.getValue(drinkName);
            if (!value) {
                alert(`Информация о напитке  ${drinkName} отсутствует`);
@@ -77,17 +90,14 @@
        })
 
        deleteInfoButton.addEventListener('click', function() {
-           let div = document.createElement('div');
            let drinkName = prompt('Какой напиток удалить из списка?', 'Маргарита');
            if (!drinkName) return;
            let isDeleted = drinkStorage.deleteValue(drinkName);
            if (isDeleted) {
-                div.innerHTML = `Информация о напитке "${drinkName}" была удалена`;
+                alert(`Информация о напитке "${drinkName}" была удалена`);
            } else {
-                div.innerHTML = `Информация о напитке "${drinkName}" отсутствует`;
+                alert(`Информация о напитке "${drinkName}" отсутствует`);
            }
-
-           output.append(div);
        })
 
        showListButton.addEventListener('click', function() {
