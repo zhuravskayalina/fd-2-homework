@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOWELS_ARR</title>
+</head>
+<body>
+    <script>
+        const vowels = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
+
+        function countVowels1(str) {
+            str = str.toLowerCase();
+            let counter = 0;
+            str.split('').forEach(element => {
+                if (vowels.includes(element)) {
+                    counter++;
+                }
+            });
+
+            return counter;
+        }
+
+        console.log('решение 1: ' + countVowels1('Каждый человек имеет право сказать, и каждый человек имеет право слушать или не слушать.'));
+
+        function countVowels2(str) {
+            str = str.toLowerCase();
+            let arrFromVowels = str.split('').filter(letter => vowels.includes(letter));
+            return arrFromVowels.length
+        }
+
+        console.log('решение 2: ' + countVowels2('Каждый человек имеет право сказать, и каждый человек имеет право слушать или не слушать.'));
+
+        function countVowels3(str) {
+            str = str.toLowerCase();
+            let arr = Array.from(str);
+            let arrFromVowels = arr.reduce((accum, curr) => {
+                if (vowels.includes(curr)) {
+                    accum.push(curr);
+                    
+                }
+                return accum;
+            }, []) 
+            return arrFromVowels.length;
+        }
+
+        console.log('решение 3: ' + countVowels2('Каждый человек имеет право сказать, и каждый человек имеет право слушать или не слушать.'));
+        
+
+
+     </script>
+</body>
+</html>
