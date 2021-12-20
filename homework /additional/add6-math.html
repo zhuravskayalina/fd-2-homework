@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6math</title>
+</head>
+
+<body>
+    <script>
+        function isLowPriority(op1) {
+            const lowPriority = ['+', '-',];
+            return lowPriority.includes(op1);
+        }
+        
+        function buildRPN(str) {
+            let arr = str.split(' ');
+            console.log(arr);
+            const operatorsDictionary = ['+', '-', '*', '/'];
+            const operators = [];
+            const output = [];
+        
+            for (let el of arr) {
+                let lastOperator = operators[operators.length - 1];
+                if (!isNaN(el)) {
+                    output.push(el);
+                } else if (operatorsDictionary.includes(el)) {
+                    if (operators.length > 0) {
+                        if ((lastOperator !== '(') && isLowPriority(el)) {
+                            output.push(operators.pop(lastOperator));
+                        }
+                    }
+                    operators.push(el);
+                } else if (el === '(') {
+                    operators.push(el);
+                } else if (el === ')') {
+                    while (lastOperator !== '(') {
+                        output.push(operators.pop(lastOperator));
+                        lastOperator = operators[operators.length - 1];
+                    }
+                    operators.pop()
+                }
+            }
+        
+            while (operators.length) {
+                output.push(operators.pop());
+            }
+            return output;
+        }
+        
+        function calcRPN(arr) {
+            const numbers = [];
+            for (let i = 0; i < arr.length; i++) {
+                let char = arr[i];
+                if (!isNaN(char)) {
+                    numbers.push(Number(char));
+                } else {
+                    let b = numbers.pop(); // поменяла местами
+                    let a = numbers.pop();
+        
+                    if (char === '*') {
+                        numbers.push(a * b);
+                    } else if (char === '+') {
+                        numbers.push(a + b);
+                    } else if (char === '-') {
+                        numbers.push(a - b);
+                    } else if (char === '/') {
+                        numbers.push(a / b);
+                    }
+                }
+            }
+        
+            return numbers.pop();
+        }
+        
+        function splitStr(str) {
+            let output = [];
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === '-') {
+                    if (!isNaN(str[i - 1])) {
+                        output.push(str[i])
+                    } else {
+                        let char = str[i] + str[i + 1];
+                        output.push(char)
+                        i++;
+                    }
+                } else {
+                    output.push(str[i])
+                }
+            }
+            console.log(output);
+        
+        
+            function findDouble(arr) {
+                for (let i = 0; i < arr.length; i++) {
+        
+                }
+            } 
+        
+            findDouble(output)
+        
+        }
+        
+        let str = '123*(-13+1)';
+        splitStr(str)
+        
+        
+        
+        // let d = buildRPN('2 * ( -3 + 1 )'); //2*(-3+1)
+        // console.log(d);
+        // console.log(calcRPN(d));
+        
+        // console.log(isNaN('-3'));
+        
+        
+    </script>
+</body>
+
+</html>
