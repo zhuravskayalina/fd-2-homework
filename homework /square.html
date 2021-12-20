@@ -32,12 +32,12 @@
                         square.style.left = coords.left - 5 + 'px';
                         break;
                     case up: 
-                        if (square.style.top <= 0) break;
+                        if (coords.top <= 0) break;
                         square.style.top = coords.top - 5 + 'px';
                         break;
                         
                     case right: 
-                        if (square.style.rigth >= document.body.offsetWidth) break;
+                        if (coords.left >= document.body.offsetWidth) break;
                         square.style.left = coords.left + 5 + 'px';
                         break;
 
