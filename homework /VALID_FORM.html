@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALID_FORM</title>
+    <style>
+        .form-box {
+            width: 500px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            margin: 5px 0;
+
+        }
+
+        .invalid-form {
+            border: 2px solid tomato;
+            border-radius: 2px;
+        }
+
+        label {
+            position: relative;
+        }
+
+        .invalid-message {
+            background-color: tomato;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="https://fe.it-academy.by/TestForm.php">
+        <fieldset>
+            <legend>Для внесения вашего сайта в каталог, заполните форму:</legend>
+            <div class="form-box first>
+                <label for=" textarea">Разработчики: </label>
+                <input type="text" name="textarea" class="input-form">
+            </div>
+            <div class="form-box">
+                <label for="textarea">Название сайта: </label>
+                <input type="text" name="textarea" class="input-form">
+            </div>
+            <div class="form-box">
+                <label for="textarea">URL сайта: </label>
+                <input type="text" name="textarea" class="input-form">
+            </div>
+            <div class="form-box">
+                <label for="textarea">Дата запуска сайта: </label>
+                <input type="date" name="textarea" class="input-form">
+            </div>
+            <div class="form-box">
+                <label for="textarea">Посетителей в сутки: </label>
+                <input type="number" name="textarea" class="input-form">
+            </div>
+            <div class="form-box">
+                <label for="textarea">E-mail для связи: </label>
+                <input type="text" name="textarea" class="input-form">
+            </div>
+            <div class="form-box">
+                <label for="selectbasic">Рубрика каталога: </label>
+                <select id="selectbasic" name="selectbasic">
+                    <option value="1">Бытовая техника</option>
+                    <option value="2">Здоровье</option>
+                    <option value="3">Уют</option>
+                </select>
+            </div>
+            <div class="form-box">
+                <label for="radios">Размещение:</label>
+                <div class="radios">
+                    <label>
+                        <input class="input-form" type="radio" name="radios" id="radios-0" value="1">
+                        Бесплатное
+                    </label>
+                    <label>
+                        <input class="input-form" type="radio" name="radios" id="radios-1" value="2" checked>
+                        Платное
+                    </label>
+                    <label>
+                        <input class="input-form" type="radio" name="radios" id="radios-2" value="3" checked>
+                        VIP
+                    </label>
+                </div>
+            </div>
+            <div class="form-box">
+                <label for="checkbox">Разрешить отзывы: </label>
+                <input class="input__form" type="checkbox" name="checkbox" id="checkboxes-0" value="1">
+            </div>
+            <div class="form-box">
+                <p>Описание сайта: </p>
+                <textarea name="textarea" id="textarea" cols="10" rows="5"></textarea>
+            </div>
+            <div class="form-box">
+                <input type="submit" value="Опубликовать" class="submit-button" name="submit-button">
+            </div>
+
+        </fieldset>
+    </form>
+
+    <script>
+        let inputs = document.querySelectorAll('input');
+        let textarea = document.querySelector('textarea');
+        const submitButton = document.querySelector('.submit-button');
+
+        for (let input of inputs) {
+            input.addEventListener('blur', validateField)
+            input.addEventListener('input', validateField)
+        }
+
+        textarea.addEventListener('blur', validateField);
+        textarea.addEventListener('input', validateField);
+
+        submitButton.addEventListener('click', validateAll)
+
+
+        //проверка только на пустое поле input
+
+        function validateField(event) {
+            let formBox = event.target.closest('.form-box');
+            let invalidMessage = formBox.querySelector('.invalid-message');
+
+            if (!event.target.value) {
+                renderMessage(event.target);
+            } else {
+                if (invalidMessage) {
+                    invalidMessage.remove();
+                }
+            }
+        }
+
+        function validateAll(event) {
+            event.preventDefault();
+
+            for (let input of inputs) {
+                if (!input.value) {
+                    renderMessage(input);
+                }
+            }
+
+            if (textarea.value.length < 10) {
+                renderMessage(textarea, 'Введите больше 10 символов');
+            }
+        }
+
+        function renderMessage(target, text = 'Введите корректно') {
+            let message = document.createElement('div');
+            message.classList.add('invalid-message');
+            let coords = target.getBoundingClientRect();
+            message.style.top = coords.top + 'px';
+            message.style.left = coords.right + 'px';
+            message.textContent = text;
+            target.after(message);
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
