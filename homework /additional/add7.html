@@ -30,15 +30,14 @@
                 
                 element.textContent = newString;
                 document.body.append(element);
+                console.log(element);
             }
         }
 
         let buildH1 = buildWrapper('h1');
         buildH1("hi&");
-        buildH1("hi'");
 
         let buildP = buildWrapper('p');
-        buildP('hello');
         buildP('me & they');
 
     </script>
