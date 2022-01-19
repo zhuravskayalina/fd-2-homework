@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add9</title>
+</head>
+
+<body>
+    <script>
+
+        //не очень поняла задание, поэтому функция пока форматирует в виде 0 000 000.00
+
+
+        function formatNumber(num) {
+            num = num.toFixed(2);
+            let firstPart = num.split('.')[0];
+            let secondPart = num.split('.')[1];
+            let result = Number(firstPart).toLocaleString() + '.' + secondPart;    
+            console.log(result);
+        }
+
+
+        let number1 = 2845345345354.0355345;
+        formatNumber(number1);
+
+        let number2 = 1;
+        formatNumber(number2);
+
+        let number3 = 2.02;
+        formatNumber(number3);
+
+
+
+    </script>
+</body>
+
+</html>
