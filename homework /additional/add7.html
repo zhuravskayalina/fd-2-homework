@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add7</title>
+</head>
+<body>
+    <script>
+        function buildWrapper(tag) {
+            const element = document.createElement(tag);
+
+            return function(string) {
+
+                const mnemonics = { // словарь 
+                    '"': '&quot;',
+                    '&': '&amp;',
+                    "'": '&apos;',
+
+                };
+
+                let newString = string; 
+
+                for (let symbol in mnemonics) {
+                    if (Array.from(string).includes(symbol)) {
+                       newString =  string.replace(symbol, mnemonics[symbol])
+                    }
+                }
+                
+                element.textContent = newString;
+                document.body.append(element);
+            }
+        }
+
+        let buildH1 = buildWrapper('h1');
+        buildH1("hi&");
+        buildH1("hi'");
+
+        let buildP = buildWrapper('p');
+        buildP('hello');
+        buildP('me & they');
+
+    </script>
+</body>
+</html>

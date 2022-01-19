@@ -14,15 +14,15 @@ circle.append(centerDial)
 centerDial.style.top = Math.round(circleCenterY - centerDial.offsetHeight / 2) + 'px';
 centerDial.style.left = Math.round(circleCenterX - centerDial.offsetWidth / 2) + 'px';
 
-function clockHandsPosition(hand) {
-    hand.style.top = Math.round(circleCenterY - hand.offsetHeight) + 'px';
-    hand.style.left = Math.round(circleCenterX - hand.offsetWidth / 2) + 'px';
-}
-
 //позиционирование стрелок по центру циферблата
 clockHandsPosition(hoursHand);
 clockHandsPosition(minutesHand);
 clockHandsPosition(secondsHand);
+
+function clockHandsPosition(hand) {
+    hand.style.top = Math.round(circleCenterY - hand.offsetHeight) + 'px';
+    hand.style.left = Math.round(circleCenterX - hand.offsetWidth / 2) + 'px';
+}
 
 let angle = 0; //угол поворота
 let timeNumberCount = 1; //цифры циферблата
