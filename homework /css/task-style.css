@@ -19,22 +19,24 @@ body {
 
 
 img {
-    width: 500px;
+    max-width: 100%;
     height: auto; 
 }
 
 .result-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     background-color: rgb(248, 248, 248);
     margin-top: 40px;
+    padding: 20px;
 }
 
 
 .result-heading {
     font-size: 20px;
     display: block;
-    margin: 20px 0;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .code-example {
@@ -43,7 +45,7 @@ img {
 }
 
 .result {
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .link-heading {
@@ -79,6 +81,18 @@ img {
 }
 
 
-@media (min-width: 768px) {
-    
+@media (max-width: 768px) {
+    .result-container {
+        grid-template-columns: 1fr;
+    }
+
+    .code-example {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .result {
+        text-align: center;
+        margin-top: 20px;
+    }
 }
