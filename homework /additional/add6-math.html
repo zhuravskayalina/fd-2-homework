@@ -17,7 +17,6 @@
         
         function buildRPN(str) {
             let arr = str.split(' ');
-            console.log(arr);
             const operatorsDictionary = ['+', '-', '*', '/'];
             const operators = [];
             const output = [];
@@ -90,29 +89,15 @@
                     output.push(str[i])
                 }
             }
-            console.log(output);
-        
-        
-            function findDouble(arr) {
-                for (let i = 0; i < arr.length; i++) {
-        
-                }
-            } 
-        
-            findDouble(output)
-        
         }
         
         let str = '123*(-13+1)';
         splitStr(str)
         
         
+        let d = buildRPN('2 * ( -3 + 1 )'); 
+        console.log(calcRPN(d)); // -4
         
-        // let d = buildRPN('2 * ( -3 + 1 )'); //2*(-3+1)
-        // console.log(d);
-        // console.log(calcRPN(d));
-        
-        // console.log(isNaN('-3'));
         
         
     </script>

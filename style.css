@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600&display=swap');
+
+:root {
+    --black: #1B1D21;
+    --blue: #0066FF;
+    --gray: #EAEAEA;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+.homework-wrap {
+    max-width: 864px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+.heading {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.subheading {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* .uppercase {
+    text-transform: uppercase;
+} */
+
+.list-wrap {
+    margin-top: 88px;
+}
+
+.homework-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 40px;
+}
+
+.list-item {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: var(--black)
+}
+ 
+.homework-list {
+	list-style-type: none; 
+	counter-reset: num;
+	margin: 0 0 0 45px;
+	padding: 15px 0 5px 0;
+	font-size: 16px;
+}
+.list-item a{
+	position: relative;	
+	margin: 0 0 0 0;
+	padding: 0 0 10px 0;
+	line-height: 40px;
+}
+
+.list-item a:before {
+	content: counter(num); 
+	counter-increment: num;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: -38px;
+	width: 28px;
+	height: 28px;
+	background: var(--blue);
+    border-radius: 8px;
+	color: #fff;
+	text-align: center;
+	line-height: 28px;
+    font-size: 16px;
+}
+
+.main {
+    margin-top: 88px;
+}
+
+.task-block {
+    margin-top: 80px;
+}
+
+.task-number {
+    width: 32px;
+    height: 32px;
+    background-color: var(--blue);
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.block-heading {
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.task-name {
+    margin-left: 16px;
+}
+
+.block-name {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.condition-text {
+    margin-top: 16px;
+}
+
+.task-link {
+    text-decoration: none;
+    color: var(--blue);
+
+}
+
+.code-heading {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.code {
+    margin-top: 32px;
+}
+
+.condition {
+    margin-top: 40px;
+}
+
+.code-box {
+    margin-top: 26px;
+    border-radius: 8px;
+}
