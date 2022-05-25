@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="result"></div>
     <script>
         function removeForbiddenSybmols(string) {
             const punctuationMarks = [',', '.', '?', '-', ';', '/', '!', '"', "(", ')'];
@@ -42,13 +43,21 @@
             function logIsPalindrome(str) {
                 const formattedString = removeForbiddenSybmols(str);
                 const isStringPalindrome = isPalindrome(formattedString);
-                const resultString = `${str} is ${isStringPalindrome ? '' : 'not'}a palindrome`;
-                console.log(resultString);
+                const resultString = `${str} is ${isStringPalindrome ? '...' : '...not'} a palindrome`;
+                return resultString;
             }
 
-            logIsPalindrome('Лёша на полке клопа нашёл');
-            logIsPalindrome('Лёша');
-            logIsPalindrome('ьЬ Ьъ');
+            const resultOutput = document.querySelector('.result');
+
+            const str1 = 'Лёша на полке клопа нашёл';
+            const str2 = 'Лёша';
+            const str3 = 'ьЬ Ьъ';
+
+            const result1 = logIsPalindrome(str1);
+            const result2 = logIsPalindrome(str2);
+            const result3 = logIsPalindrome(str3);
+
+            resultOutput.innerHTML = result1 + '<br>' + result2 + '<br>' + result3;
 
     </script>
 </body>

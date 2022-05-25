@@ -118,7 +118,7 @@
 }
 
 .block-name {
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -150,4 +150,25 @@
 .code-box {
     margin-top: 26px;
     border-radius: 8px;
+}
+
+.clock-dom {
+    margin-top: 10px;
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+
+/* .code-box {
+   display: none;
+} */
+
+.condition-task-list {
+    padding-left: 20px;
+}
+
+.example {
+    font-weight: bold;
+    margin-left: 30px;
+    padding: 10px;
 }
