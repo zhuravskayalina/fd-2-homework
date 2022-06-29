@@ -13,10 +13,20 @@
     font-family: 'Manrope', sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .homework-wrap {
+    padding: 10px;
     max-width: 864px;
-    margin: 0 auto;
     margin-top: 120px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .heading {
@@ -30,9 +40,6 @@
     font-weight: 500;
 }
 
-/* .uppercase {
-    text-transform: uppercase;
-} */
 
 .list-wrap {
     margin-top: 88px;
@@ -121,6 +128,7 @@
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
+    font-weight: bolder;
 }
 
 .condition-text {
@@ -135,8 +143,17 @@
 
 .code-heading {
     display: flex;
-    justify-content: space-between;
-    text-align: center;
+    align-items: center;
+}
+
+.codepen-link {
+    text-decoration: none;
+    background-color: #0066FF;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-left: 20px;
+    color: white;
+    font-size: smaller;
 }
 
 .code {
@@ -173,19 +190,67 @@
     padding: 10px;
 }
 
+.up-button {
+    padding: 10px;
+    border: none;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
 
-calculator
-compress
-recycle
-clock
-language
-vowels
-palindrome
-format
-secret
-array-length
-array-count
-encoding
+.up-button:active {
+    background-color:#428eff;
+}
+
+.hidden {
+    display: none;
+}
+
+.show-button {
+    display: block;
+}
+
+@media screen and (max-width: 900px) {
+
+    .main {
+        padding: 50px;
+    }
+
+    .homework-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .subheading {
+        width: 500px;
+        text-align: center;
+    }
+
+    .homework-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .code-box {
+        display: none;
+    }
+
+    .codepen-link {
+        display: block;
+    }
+
+    .up-button {
+        left: auto;
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
 
 
-
+}
