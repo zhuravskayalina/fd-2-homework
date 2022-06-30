@@ -14,9 +14,9 @@
 }
 
 body {
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -33,11 +33,14 @@ body {
     font-weight: 700;
     font-size: 48px;
     line-height: 56px;
+    text-align: center;
+
 }
 
 .subheading {
     margin-top: 10px;
     font-weight: 500;
+    text-align: center;
 }
 
 
@@ -172,8 +175,8 @@ body {
 .clock-dom {
     margin-top: 10px;
     display: block;
-    width: 200px;
-    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 /* .code-box {
@@ -214,7 +217,7 @@ body {
     display: block;
 }
 
-@media screen and (max-width: 900px) {
+@media (max-width: 900px) {
 
     .main {
         padding: 50px;
@@ -227,7 +230,6 @@ body {
         flex-direction: column;
     }
     .subheading {
-        width: 500px;
         text-align: center;
     }
 
@@ -250,7 +252,9 @@ body {
     }
 }
 
-@media screen and (max-width: 700px) {
-
+@media (max-width: 700px) {
+    .homework-wrap {
+        max-width: 600px;
+    }
 
 }
