@@ -1,5 +1,5 @@
+
 const links = document.querySelectorAll('.task-link');
-console.log(links);
 
 for (let link of links) {
     link.addEventListener('click', function(event) {
@@ -31,3 +31,6 @@ window.addEventListener('scroll', function() {
         behavior: "smooth"
     });
 })
+
+
+console.log(this);
